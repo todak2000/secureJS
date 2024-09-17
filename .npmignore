@@ -1,0 +1,9 @@
+node_modules/
+build/
+tests/
+__tests__/
+__mocks__/
+.env
+.eslint*
+.prettier*
+.DS_Store
