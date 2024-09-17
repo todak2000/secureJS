@@ -1,6 +1,6 @@
 {
   "name": "@todak2000/securejs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "@todak2000/securejs is a modern JavaScript cryptography library designed to enhance web application security. It provides a user-friendly interface for complex cryptographic operations using advanced encryption algorithms.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
