@@ -23,6 +23,12 @@ npm install @todak2000/securejs
 
 ## Usage
 
+### Import Library
+
+```javascript
+import { SecureJS } from "@todak2000/securejs";
+```
+
 ### Symmetric Encryption (AES-GCM)
 
 ```javascript
