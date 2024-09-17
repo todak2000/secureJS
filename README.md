@@ -4,6 +4,10 @@
 
 SecureJS is a modern JavaScript cryptography library designed to enhance web application security. It provides a user-friendly interface for complex cryptographic operations using advanced encryption algorithms.
 
+## Demo Link
+
+[SecureJS Demo](https://securejs-react-demo.vercel.app/)
+
 ## Features
 
 - **AES-GCM Encryption**: Secure symmetric encryption for data confidentiality and integrity.
@@ -14,7 +18,7 @@ SecureJS is a modern JavaScript cryptography library designed to enhance web app
 ## Installation
 
 ```bash
-npm install securejs
+npm install @todak2000/securejs
 ```
 
 ## Usage
