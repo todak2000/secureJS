@@ -1,279 +1,89 @@
-# NIGERIA-STATE-LGA-COMPONENT
+# SecureJS
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-This library which allows developers to quickly fetch data about Nigerian geographical regions, states and Local Government Areas (LGA). It provides a customisable component which can be used to display the fetched data, allowing developers to save time and energy in coding.
+SecureJS is a modern JavaScript cryptography library designed to enhance web application security. It provides a user-friendly interface for complex cryptographic operations using advanced encryption algorithms.
 
-- fetch Geographical region data by using the `useRegionsApi` Hook.
-- fetch all 36 states plus FCT data by using the `useStatesApi` Hook.
-- fetch all 774 Local Government Area data by using the `useStateLGAApi` Hook.
-  However, you could save yourself that time by using the customizbale components `StateWidget` and `LGAWidget`.
+## Features
 
-- display States data using the `StateWidget` compoennt.
-- display LGA data based on state using the `LGAWidget` compoennt.
-  While you can use both components as standalone, however, the `LGAWidget` requires that the `state` prop be given a string value.
+- **AES-GCM Encryption**: Secure symmetric encryption for data confidentiality and integrity.
+- **ECDSA Digital Signatures**: Robust asymmetric encryption for authentication and non-repudiation.
+- **Argon2 Password Hashing**: State-of-the-art password hashing (server-side only).
+- **Cross-Environment Compatibility**: Works in both browser and Node.js environments.
 
-![ezgif com-optimize](https://user-images.githubusercontent.com/26861798/236657359-49edcfbf-1ca2-437e-ae5c-209a11160031.gif)
+## Installation
 
-
-## Demo
-https://nigeria-state-lga-react-component.todak2000.repl.co/
-
-## Quickstart
-
-Install this library:
-
-```
-npm i @todak2000/nigeria-state-lga-react-component
-# or
-yarn add @todak2000/nigeria-state-lga-react-component
-
+```bash
+npm install securejs
 ```
 
-Then, import and use any of the functionalities you might require:
+## Usage
 
-```
-...
-import {
-  useStatesApi,
-  useStateLGAApi,
-  StateWidget,
-  LGAWidget,
-  useRegionsApi,
-} from "@todak2000/nigeria-state-lga-component";
+### Symmetric Encryption (AES-GCM)
 
-
-function SampleApp() {
-  const [state, setState] = useState("");
-  const [LGA, setLGA] = useState("");
-  const [stateAlone, setStateAlone] = useState("");
-  const [stateMultiple, setStateMultiple] = useState([]);
-  const [LGAAlone, setLGAAlone] = useState("");
-  const [LGAMultiple, setLGAMultiple] = useState([]);
-
-  const singleStateLGAs = useStateLGAApi("cross river");
-  const regions = useRegionsApi();
-
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-around",
-        flexWrap: "wrap",
-        overflowY: "auto",
-        height: "95vh",
-      }}
-    >
-      <div
-        style={{
-          padding: 10,
-          backgroundColor: "#f1f9f9",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          marginBottom: 10,
-        }}
-      >
-        <p>State/LGA Widgets Together</p>
-        <StateWidget
-          setState={setState}
-          className="bg-select"
-          selectStyle={{ padding: 5}}
-        />
-        <p>State Selected: {state}</p>
-
-        {state !== "" && (
-          <>
-            <LGAWidget
-              state={state}
-              setLGAState={setLGA}
-              className="bg-select"
-              selectStyle={{ padding: 5}}
-            />
-            <p>LGA Selected: {LGA}</p>
-          </>
-        )}
-      </div>
-      <div
-        style={{
-          padding: 10,
-          backgroundColor: "#1e90ff",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          marginBottom: 10,
-        }}
-      >
-        <p>State Widget Standalone (Single Select)</p>
-        <StateWidget
-          setState={setStateAlone}
-          className="bg-select"
-          selectStyle={{ padding: 5}}
-        />
-        <p>State Selected: {stateAlone}</p>
-      </div>
-
-      <div
-        style={{
-          padding: 10,
-          backgroundColor: "#0d98ba",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          marginBottom: 10,
-        }}
-      >
-        <p>State Widget Standalone (Multiple Select)</p>
-        <StateWidget
-          isMultipleSelect
-          setState={setStateMultiple}
-          className="bg-select"
-          selectStyle={{ padding: 5}}
-        />
-        <p>
-          States Selected: <br />
-          {stateMultiple.map((state) => {
-            return (
-              <span>
-                {state}
-                <br />
-              </span>
-            );
-          })}
-        </p>
-      </div>
-      <div
-        style={{
-          padding: 10,
-          backgroundColor: "#89CFF0",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          marginBottom: 10,
-        }}
-      >
-        <p>LGA Widget Standalone (Single Select)</p>
-        <LGAWidget
-          setLGAState={setLGAAlone}
-          className="bg-select"
-          selectStyle={{ padding: 5}}
-        />
-        <p>LGA Selected: {LGAAlone}</p>
-      </div>
-
-      <div
-        style={{
-          padding: 10,
-          backgroundColor: "#a2a2d0",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          marginBottom: 10,
-        }}
-      >
-        <p>LGA Widget Standalone (Multiple Select)</p>
-        <LGAWidget
-          setLGAState={setLGAMultiple}
-          isMultipleSelect
-          className="bg-select"
-          selectStyle={{ padding: 5}}
-        />
-        <p>
-          LGAs Selected: <br />
-          {LGAMultiple.map((lga) => {
-            return (
-              <span>
-                {lga}
-                <br />
-              </span>
-            );
-          })}
-        </p>
-      </div>
-      <div
-        style={{
-          padding: 10,
-          backgroundColor: "#a2a2d0",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          marginBottom: 10,
-        }}
-      >
-        <h4>Regions</h4>
-        <ul style={{ overflowY: "auto", height: "40vh" }}>
-          {regions.map(({ id, region }) => (
-            <li key={id}>{region}</li>
-          ))}
-        </ul>
-      </div>
-      <div
-        style={{
-          padding: 10,
-          backgroundColor: "#f1f9f9",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          marginBottom: 10,
-        }}
-      >
-        <h4>Single State Result</h4>
-        <ul style={{ overflowY: "auto", height: "40vh" }}>
-          {singleStateLGAs.map(({ id, state, lga }) => (
-            <div key={id}>
-              <h4>{state}</h4>
-              <ul style={{ overflowY: "auto", height: "80vh" }}>
-                {lga.map((lgaName) => (
-                  <li key={lgaName}>{lgaName}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-}
-
-export default SampleApp;
-
-
+```javascript
+const key = await SecureJS.generateEncryptionKey();
+const encryptedMessage = await SecureJS.encrypt("Sensitive data", key);
+const decryptedMessage = await SecureJS.decrypt(encryptedMessage, key);
+console.log(decryptedMessage);  // Output: "Sensitive data"
 ```
 
-## API
-This is a list of props required/optional. It is important to note that depending if `isMultipleSelect` is `true` or `false`, developer might want to customize the Select/Option component. 
+### Asymmetric Encryption (ECDSA)
 
-| **Property**            	| **Description**                                                                        	| **DefaultValue** 	| **Type** 	| **Component Type**                        	| **Compulsory** 	|
-|-------------------------	|----------------------------------------------------------------------------------------	|------------------	|----------	|-------------------------------------------	|----------------	|
-| `setState`              	| Function that allows you to update the selected `state` value                          	| `null`           	| function 	| `StateWidget`                             	| Yes            	|
-| `setLGAState`           	| Function that allows you to update selected the `LGA` value                            	| `null`           	| function 	| `LGAWidget`                               	| Yes            	|
-| `className`             	| Name of parent classes                                                                 	| `""`             	| string   	| All                                       	| optional       	|
-| `style`                 	| Name of parent style attribute                                                         	| `{padding: 5}`   	| object   	| All                                       	| optional       	|
-| `isMultipleSelect`      	| Help to determine type of select component preffered : `Singleselect` or `Multiselect` 	| `false`          	| boolean  	| All                                       	| optional       	|
-| `selectClassName`       	| Select tag parent class attribute - pass your customized classes in here               	| `defaultClass`   	| string   	| All                                       	| optional       	|
-| `selectStyle`           	| Select tag parent style attribute - pass your customized style object in here          	| `defaultStyle`   	| object   	| All                                       	| optional       	|
-| `dropdownClassName`     	| Drop down parent class attribute - pass your customized classes in here                	| `defaultClass`   	| string   	| All                                       	| optional       	|
-| `dropdownStyle`         	| Drop down Container style attribute                                                    	| `defaultStyle`   	| object   	| All                                       	| optional       	|
-| `selectedItemStyle`     	| Selected Item Container style attribute                                                	| `defaultStyle`   	| object   	| All but `IsMultipleSelect` must be `true` 	| optional       	|
-| `selectedItemClass`     	| Selected item parent class attribute - pass your customized classes in here            	| `defaultClass`   	| string   	| All but `IsMultipleSelect` must be `true` 	| optional       	|
-| `optionsContainerClass` 	| Options Container parent class attribute - pass your customized classes in here        	| `defaultClass`   	| string   	| All                                       	| optional       	|
-| `optionsContainerStyle` 	| Options Container style attribute                                                      	| `defaultStyle`   	| object   	| All                                       	| optional       	|
-| `optionsClass`          	| Option item class attribute - pass your customized classes in here                     	| `defaultClass`   	| string   	| All                                       	| optional       	|
-| `optionsStyle`          	| Option item style attribute                                                            	| `defaultStyle`   	| object   	| All                                       	| optional       	|
-| `searchClass`           	| Search component class attribute - pass your customized classes in here                	| `defaultClass`   	| string   	| All                                       	| optional       	|
-| `searchStyle`           	| Search component style attribute                                                       	| `defaultStyle`   	| object   	| All                                       	| optional       	|
-| `searchContainerClass`  	| Search Container class attribute - pass your customized classes in here                	| `defaultClass`   	| string   	| All                                       	| optional       	|
-| `searchContainerStyle`  	| Search Container style attribute                                                       	| `defaultStyle`   	| object   	| All                                       	| optional       	|
+```javascript
+const keyPair = await SecureJS.generateKeyPair();
+const messageBuffer = new TextEncoder().encode("Verify me!");
+const signature = await SecureJS.sign(messageBuffer, keyPair.privateKey);
+const isValid = await SecureJS.verify(signature, messageBuffer, keyPair.publicKey);
+console.log(isValid);  // Output: true
+```
 
+### Password Hashing (Argon2, server-side only)
 
+```javascript
+const hashedPassword = await SecureJS.hash("mySecretPassword");
+const isMatch = await SecureJS.verify("mySecretPassword", hashedPassword);
+console.log(isMatch);  // Output: true
+```
 
-## Collaborators
-- [Bolaji Tijani](https://pipeline.talentql.com/) - Product Manager
-- [Keefayah Kemi](https://pipeline.talentql.com/) - Product Designer
-- [Daniel Olagunju](https://github.com/todak2000) - Developer
+## API Reference
+
+### Symmetric Encryption
+
+- `generateEncryptionKey()`: Generates a secure encryption key.
+- `encrypt(data, key)`: Encrypts data using AES-GCM.
+- `decrypt(encryptedData, key)`: Decrypts AES-GCM encrypted data.
+
+### Asymmetric Encryption
+
+- `generateKeyPair()`: Generates a public-private key pair for ECDSA.
+- `sign(data, privateKey)`: Signs data with a private key.
+- `verify(signature, data, publicKey)`: Verifies a signature with a public key.
+
+### Hashing (Server-side only)
+
+- `hash(data)`: Hashes data using Argon2.
+- `verify(plaintext, hashedData)`: Verifies hashed data against plaintext.
+
+## Security Considerations
+
+- Always use HTTPS when transmitting encrypted data or keys.
+- Never store encryption keys or private keys in client-side storage.
+- Argon2 hashing is only available server-side due to browser limitations.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Acknowledgement
-- [Charles Odili](https://github.com/chalu)
-- [AltSchool TalentQL Pipeline Team](https://pipeline.talentql.com/)
+- [Dr. Nasir Baba-Ahmed, CHFI, CEH, ACE, MTCNA](https://www.linkedin.com/in/dr-nasir-baba-ahmed-chfi-ceh-ace-mtcna-7b71917a/)
+- [Mr. Victor Idonor](https://www.linkedin.com/in/idonor/)
+- [Baze University](https://bazeuniversity.edu.ng)
+- [World Bank](https://www.worldbank.org/en/home)
+
+## Author
+- [Daniel Olagunju](https://github.com/todak2000)
+
+## License
+
+This project is licensed under the MIT License.

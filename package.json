@@ -1,17 +1,43 @@
 {
-  "name": "securejs",
+  "name": "@todak2000/securejs",
   "version": "1.0.0",
-  "description": "",
+  "description": "@todak2000/securejs is a modern JavaScript cryptography library designed to enhance web application security. It provides a user-friendly interface for complex cryptographic operations using advanced encryption algorithms.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "lint": "eslint src/**/*.ts"
+    "lint": "eslint src/**/*.ts",
+    "prepublishOnly": "npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/todak2000/secureJS.git"
+  },
+  "keywords": [
+    "JavaScript cryptography library",
+    "SecureJS",
+    "web application security",
+    "AES-GCM encryption",
+    "ECDSA digital signatures",
+    "Argon2 password hashing",
+    "advanced encryption algorithms",
+    "cryptographic operations",
+    "data confidentiality and integrity",
+    "authentication and non-repudiation",
+    "cross-environment compatibility",
+    "browser and Node.js support",
+    "modern cryptography",
+    "secure JavaScript library",
+    "encryption for web apps",
+    "user-friendly cryptography interface"
+  ],
+  "author": "Daniel Olagunju",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/todak2000/secureJS/issues"
+  },
+  "homepage": "https://github.com/todak2000/secureJS#readme",
   "dependencies": {
     "argon2": "^0.41.1",
     "argon2-browser": "^1.18.0",
@@ -30,5 +56,8 @@
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
